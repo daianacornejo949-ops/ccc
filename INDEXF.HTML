@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registro de Usuario</title>
+    <script>
+      function validateForm() {
+        // Validación de contraseña
+        var password = document.getElementById("password").value;
+        var regexPassword = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{4}/;
+
+        // Validación de teléfono de Bolivia
+        var telefono = document.getElementById("telefono").value;
+        var regexTelefono = /^[67][0-9]{7}$/;
+
+        if (!regexPassword.test(password)) {
+          alert("La contraseña no cumple los requisitos.");
+          return false;
+        }
+
+        if (!regexTelefono.test(telefono)) {
+          alert("El número de teléfono debe empezar con 6 o 7 y tener 8 dígitos.");
+          return false;
+        }
+
+        alert("¡Registro exitoso!");
+        return true;
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Registro de Usuario</h1>
+
+    <form onsubmit="return validateForm();">
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" name="username" required />
+      <br />
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required />
+      <br />
+
+      <label for="telefono">Número de teléfono (Bolivia):</label>
+      <input
+        type="text"
+        id="telefono"
+        name="telefono"
+        maxlength="8"
+        required
+      />
+      <br />
+
+      <input type="submit" value="Registrarse" />
+    </form>
+  </body>
+</html>
